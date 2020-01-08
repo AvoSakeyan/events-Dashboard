@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthoService} from '../Service/autho.service';
 import {Router} from '@angular/router';
-// import {invalid} from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-login-page',
@@ -37,18 +36,22 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.mainService.login(logInData)
         .subscribe(
-          (response) => {
+          (response: any) => {
+            console.log(response);
             localStorage.setItem('token', response.token);
             localStorage.setItem('username', response.user.name);
             if (response.user.isAdmin) {
               localStorage.setItem('isAdmin', 'admin');
               this.router.navigate(['adminDashboard']);
             } else {
-              this.router.navigate(['clientDashboard']);
-              // alert('Hey hey');
+              // this.router.navigate(['clientDashboard']);
+              alert('Hey hey');
             }
           });
      }
   }
 }
+
+
+
 

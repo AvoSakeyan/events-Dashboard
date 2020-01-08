@@ -2,9 +2,10 @@ import {NgModule} from '@angular/core';
 import { HeaderComponent } from './Components/header/header.component';
 
 
+
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [],
   exports: [

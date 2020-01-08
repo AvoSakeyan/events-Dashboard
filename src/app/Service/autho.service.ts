@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,13 @@ import {HttpClient} from '@angular/common/http';
 export class AuthoService {
   private baseUrl = environment.baseURL;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   login(data) {
    return  this.http.post(`${this.baseUrl}/login`, {email: data.email, password: data.password});
   }
+
 
   isAdminUser() {
     return !!localStorage.getItem('isAdmin');
@@ -23,7 +25,8 @@ export class AuthoService {
     return !!localStorage.getItem('token');
   }
 
-  // logout() {
-  //   localStorage.clear();
-  // }
+  logout() {
+    localStorage.clear();
+    this.router.navigate((['/login']));
+  }
 }
