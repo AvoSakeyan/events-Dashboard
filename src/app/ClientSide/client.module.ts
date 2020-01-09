@@ -3,6 +3,7 @@ import { EventsGridComponent } from './Components/events-grid/events-grid.compon
 import { ClientdashboardComponent } from './Components/clientdashboard/clientdashboard.component';
 import {SharedModule} from '../Shared/shared.module';
 import {EventDetailsComponent} from './Components/event-details/event-details.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {EventDetailsComponent} from './Components/event-details/event-details.co
     EventDetailsComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   exports: [
   ]

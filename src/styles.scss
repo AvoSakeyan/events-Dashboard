@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --primary-color: #dc3545;
+  --primary-color: #7a1114;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -33,21 +33,48 @@ body {
   padding: 0 3rem;
 }
 
+//====== Card style ========================================
+
 .card {
+  display:inline-block;
   padding: 1rem;
   border: #666666 1px dotted;
-  margin: 0.7rem 0;
+  border-radius: 5px;
+  margin: 0.7rem 1rem;
+  min-height: 250px;
+  width: 250px;
 
-  &-header {
+}
+
+.card:hover {
+    border: #660a11 1px dotted;
+    background-color: #484846;
+    width: 260px;
+    min-height: 255px;
+    transition: 0.3s ease;
+    h2 {
+      color: #954015;
+      transition: 0.7s ease;
+    }
+    #desc {
+      background-color: #545453;
+      transition: 0.7s ease;
+    }
+  }
+
+.card-header {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
-  &-content {
+.card-content {
     margin-bottom: .5rem;
   }
-}
+
+//====== Button style ========================================
 
 .btn {
   display: inline-block;
@@ -68,58 +95,33 @@ body {
   }
 }
 
-.alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
-}
 
-.btn-primary,
-.bg-primary,
-.badge-primary,
-.alert-primary {
+.btn-primary{
   background: var(--primary-color);
   color: #fff;
 }
 
-.btn-light,
-.bg-light,
-.badge-light,
-.alert-light {
+.btn-light {
   background: var(--light-color);
   color: #333;
 }
 
-.btn-dark,
-.bg-dark,
-.badge-dark,
-.alert-dark {
+.btn-dark {
   background: var(--dark-color);
   color: #fff;
 }
 
-.btn-danger,
-.bg-danger,
-.badge-danger,
-.alert-danger {
+.btn-danger {
   background: var(--danger-color);
   color: #fff;
 }
 
-.btn-success,
-.bg-success,
-.badge-success,
-.alert-success {
+.btn-success {
   background: var(--success-color);
   color: #fff;
 }
 
-.btn-white,
-.bg-white,
-.badge-white,
-.alert-white {
+.btn-white {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
@@ -129,14 +131,7 @@ body {
   opacity: 0.8;
 }
 
-.bg-light,
-.badge-light {
-  border: #ccc solid 1px;
-}
-
-.round-img {
-  border-radius: 50%;
-}
+//====== Form style ========================================
 
 .form-control {
   display: block;
@@ -168,10 +163,7 @@ textarea {
   border: 1px solid #ccc;
 }
 
-input[type='submit'],
-button {
-  font: inherit;
-}
+//====== Table  style ================================
 
 table {
   width: 100%;
@@ -182,11 +174,14 @@ table th,
 table td {
   padding: 0.8rem;
   text-align: left;
+  background-color: #4e5a4c;
 }
 
 table th {
   background: darkslategrey;
 }
+
+//====== NavBar style ===========================
 
 .navbar {
   display: flex;
@@ -196,29 +191,4 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 2rem;
-
-  &.main {
-    justify-content: center;
-    border-bottom: 1px solid var(--dark-color);
-  }
-
-  ul {
-    display: flex;
-  }
-
-  li.active a {
-    color: var(--dark-color);
-    font-weight: bold;
-    cursor: default;
-  }
-
-  a {
-    color: #fff;
-    padding: 0.45rem;
-    margin: 0 0.25rem;
-
-    &:hover {
-      color: var(--light-color);
-    }
-  }
 }

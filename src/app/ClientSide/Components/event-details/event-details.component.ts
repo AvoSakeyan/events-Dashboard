@@ -1,5 +1,6 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GetdataService} from '../../../Service/getdata.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-event-details',
@@ -7,17 +8,22 @@ import {GetdataService} from '../../../Service/getdata.service';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
-  events: any;
+    @Input() singleEvent: any;
+  @Input() myType: any;
+    eventTypes: any;
 
   constructor(private eventService: GetdataService) { }
 
   ngOnInit() {
-    this.getEvents();
+    console.log(this.singleEvent);
+    console.log(this.getEventType());
   }
 
-  getEvents() {
-    this.eventService.getEvents().subscribe(res => {
-      this.events = res;
+  getEventType() {
+    this.eventService.getEventType().subscribe(res => {
+      console.log(res);
+      this.eventTypes = res;
     });
   }
+
 }
