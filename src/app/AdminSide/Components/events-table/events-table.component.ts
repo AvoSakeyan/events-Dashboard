@@ -7,25 +7,33 @@ import {GetdataService} from '../../../Service/getdata.service';
   styleUrls: ['./events-table.component.scss']
 })
 export class EventsTableComponent implements OnInit {
-  private events;
+  events: any;
   createModal = false;
+  eventsType: any;
 
-  constructor(private getService: GetdataService) { }
+  constructor(private eventService: GetdataService) { }
 
   ngOnInit() {
     this.getEventsData();
+    this.getEventsTypes();
   }
 
   getEventsData() {
-    this.getService.getEvents().subscribe(res => {
-        this.events = res;
-        console.log(this.events);;
-    });
-  }
-  deleteEvent(id) {
-    this.getService.deleteEvent(id).subscribe(() => {
-      console.log('Event deleted');
+    this.eventService.getEvents().subscribe(res => {
+      this.events = res;
     });
   }
 
+  getEventsTypes() {
+    this.eventService.getEventType().subscribe(res => {
+      this.eventsType = res;
+    });
+  }
+
+  deleteEvent(id) {
+    this.eventService.deleteEvent(id).subscribe(() => {
+      console.log('Event deleted');
+    });
+    this.getEventsData();
+  }
 }

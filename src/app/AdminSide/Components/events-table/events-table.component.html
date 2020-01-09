@@ -1,5 +1,5 @@
   <div class="container">
-    <h2 class="event-heading">Events List</h2>
+    <h2 class="event-heading"><strong>Events List</strong> </h2>
     <span class="event-create">
       <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
       <app-create
@@ -19,15 +19,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let singleEvent of events">
-        <td>{{singleEvent.name}}</td>
-        <td>{{singleEvent.description}}</td>
-        <td>{{singleEvent.date}}</td>
-        <td>{{singleEvent.eventType}}</td>
+      <tr *ngFor="let event of events">
+        <td>{{event.name}}</td>
+        <td>{{event.description}}</td>
+        <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
+        <td>{{eventsType[event.eventType-1].type}}</td>
         <td>
           <button class="btn">Edit</button>
-<!--          <button class="btn btn-edit">Edit</button>-->
-          <button class="btn" (click)="deleteEvent($event)">Delete</button>
+          <button class="btn" (click)="deleteEvent(event.id)">Delete</button>
         </td>
       </tr>
       </tbody>

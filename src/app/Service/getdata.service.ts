@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+// To Do : change Service name to EventService
 export class GetdataService {
   private baseUrl = environment.baseURL;
 
@@ -13,6 +15,14 @@ export class GetdataService {
 
   getEvents() {
     return this.http.get(`${this.baseUrl}/events`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
+  getEventType() {
+    return this.http.get(`${this.baseUrl}/eventTypes`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -28,7 +38,7 @@ export class GetdataService {
   }
 
   deleteEvent(id: number) {
-    return this.http.delete<void>(`${this.baseUrl}/events/:${id}`, {
+    return this.http.delete<void>(`${this.baseUrl}/events/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

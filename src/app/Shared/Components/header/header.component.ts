@@ -10,7 +10,7 @@ import {AuthoService} from '../../../Service/autho.service';
 export class HeaderComponent implements OnInit {
   userName = localStorage.getItem('username');
 
-  constructor(private service: AuthoService) {
+  constructor(private authoService: AuthoService) {
   }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.service.logout();
+    this.authoService.logout();
   }
 
 }

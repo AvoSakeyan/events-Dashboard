@@ -23,24 +23,7 @@ body {
   background-size: 100% 100%;
   color:darkseagreen;
   z-index: 0;
-}
-
-a {
-  color: var(--primary-color);
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    color: #666;
-  }
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  width: 100%;
+  text-align: center;
 }
 
 .container {
@@ -50,29 +33,9 @@ img {
   padding: 0 3rem;
 }
 
-.text-primary {
-  color: var(--primary-color);
-}
-
-.text-dark {
-  color: var(--dark-color);
-}
-
-.text-success {
-  color: var(--success-color);
-}
-
-.text-danger {
-  color: var(--danger-color);
-}
-
-.text-center {
-  text-align: center;
-}
-
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
+  border: #666666 1px dotted;
   margin: 0.7rem 0;
 
   &-header {
@@ -177,7 +140,7 @@ img {
 
 .form-control {
   display: block;
-  color: #888;
+  color: #3f4b3d;
   margin-bottom: .3rem;
 
   &.invalid {
@@ -227,13 +190,12 @@ table th {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content:flex-end;
   padding: 0.7rem 2rem;
   z-index: 1;
   width: 100%;
   opacity: 0.9;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   &.main {
     justify-content: center;

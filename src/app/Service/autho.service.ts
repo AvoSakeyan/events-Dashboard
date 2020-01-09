@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
+//To do: gettoken();
 export class AuthoService {
   private baseUrl = environment.baseURL;
 
@@ -29,4 +31,6 @@ export class AuthoService {
     localStorage.clear();
     this.router.navigate((['/login']));
   }
+
+
 }

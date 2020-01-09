@@ -39,7 +39,7 @@
   <!--  ========== Date Part =========-->
   <div>
     <label for="date">Date</label>
-    <input id="date" type="date" formControlName="date">
+    <input id="date" type="date" formControlName="date" >
     <div
       class="validation"
       *ngIf="createForm.get('date').touched && createForm.get('date').invalid"
@@ -53,9 +53,9 @@
   <div>
     <label for="type">Type
       <select id="type" formControlName="eventType"  >
-        <option *ngFor="let type of events"
-                [value]="type.value">
-        {{type.eventType}}
+        <option *ngFor="let type of eventTypes"
+                  [value]="type.value" >
+        {{type.type}}
         </option>
       </select>
     </label>
@@ -71,6 +71,5 @@
 </form>
 
   <button class="btn space" (click)="close.emit()">Close</button>
-  <button class="btn" (click)="sendEventData()"> Save </button>
-
+  <button class="btn space" (click)="sendEventData()"> Save </button>
 </div>

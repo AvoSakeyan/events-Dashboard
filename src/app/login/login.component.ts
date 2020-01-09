@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('isAdmin', 'admin');
               this.router.navigate(['adminDashboard']);
             } else {
-              // this.router.navigate(['clientDashboard']);
-              alert('Hey hey');
+              this.router.navigate(['clientDashboard']);
             }
           });
      }

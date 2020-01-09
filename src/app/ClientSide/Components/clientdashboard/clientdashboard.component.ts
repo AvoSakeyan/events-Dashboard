@@ -10,6 +10,7 @@ export class ClientdashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('client');
   }
 
 }
