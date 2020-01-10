@@ -46,32 +46,6 @@
   margin: 0 0 0.5rem 0;
 }
 
-.event-heading {
-  max-width: 200px;
-  color: darkseagreen;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 40px;
-  font-family: 'Orienta', sans-serif;
+.space {
+  margin: 1rem 0.5rem;
 }
-
-.event-create {
-  float: right;
-  margin: 0.5rem auto;
-}
-
-.btn-create {
-  background-color: darkcyan;
-  color: darkred;
-}
-
-.btn-create:hover {
-  background-color: darkolivegreen;
-  color: antiquewhite;
-}
-
-.errMessage {
-  color: #7a1114;
-  text-align: right;
-}
-

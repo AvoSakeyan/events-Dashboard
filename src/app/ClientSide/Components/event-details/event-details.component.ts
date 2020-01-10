@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GetdataService} from '../../../Service/getdata.service';
-import {log} from 'util';
+import {EventService} from '../../../Service/event.service';
 
 @Component({
   selector: 'app-event-details',
@@ -12,7 +11,7 @@ export class EventDetailsComponent implements OnInit {
   @Input() myType: any;
     eventTypes: any;
 
-  constructor(private eventService: GetdataService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
     console.log(this.singleEvent);

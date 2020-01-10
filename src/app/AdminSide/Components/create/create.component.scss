@@ -21,7 +21,7 @@
   width: 300px;
   margin: 0 0 0.5rem 0;
   &.ng-invalid.ng-touched {
-    border: 1px solid red;
+    border: 1px solid #ca0000;
   }
 
   &.ng-valid {
@@ -30,15 +30,20 @@
 }
 
 .modal textarea {
-  width: 300px;
-  margin: 0 0 0.5rem 0;
-  &.ng-invalid.ng-touched {
-    border: 1px solid red;
-  }
+   width: 300px;
+   margin: 0 0 0.5rem 0;
+   &.ng-invalid.ng-touched {
+     border: 1px solid #ca0000;
+   }
 
-  &.ng-valid {
-    border: 1px solid green;
-  }
+   &.ng-valid {
+     border: 1px solid green;
+   }
+ }
+
+.modal small {
+ color: #ca0000;
+  margin: 0 0 0.5rem 0;
 }
 
 .space {

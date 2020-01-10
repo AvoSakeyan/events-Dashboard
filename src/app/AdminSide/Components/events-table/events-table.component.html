@@ -1,16 +1,26 @@
   <div class="container">
-    <h2 class="event-heading"><strong>Events List</strong> </h2>
+          <h2 class="event-heading"><strong>Events List</strong> </h2>
+    <span class="errMessage" >
+      <p>{{errMessage}}</p>
+    </span>
     <span class="event-create">
       <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
+      <button class="btn" (click)="eventGrid = true">EventCards</button>
       <app-create
         *ngIf= "createModal"
         title="Create modal"
         (close)="createModal = false"
       ></app-create>
+        <app-edit
+          *ngIf= "editEvent"
+          (close) = "editEvent = false"
+          [indEvent] = "tableEvent"
+          [indEventType] = "tableEventType"
+        ></app-edit>
     </span>
     <table>
       <thead>
-      <tr class="event-headings" >
+      <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Date</th>
@@ -25,10 +35,15 @@
         <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
         <td>{{eventsType[event.eventType-1].type}}</td>
         <td>
-          <button class="btn">Edit</button>
+          <button class="btn" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
           <button class="btn" (click)="deleteEvent(event.id)">Delete</button>
         </td>
       </tr>
       </tbody>
     </table>
   </div>
+
+
+<app-events-grid
+  *ngIf="eventGrid"
+></app-events-grid>

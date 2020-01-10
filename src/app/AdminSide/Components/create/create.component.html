@@ -51,14 +51,14 @@
   <!--  ========== Event Type Part =========-->
 
   <div>
-    <label for="type">Type
+    <label for="type">Type  </label>
       <select id="type" formControlName="eventType"  >
         <option *ngFor="let type of eventTypes"
                   [value]="type.value" >
         {{type.type}}
         </option>
       </select>
-    </label>
+
     <div
       class="validation"
       *ngIf="createForm.get('eventType').touched && createForm.get('eventType').invalid"

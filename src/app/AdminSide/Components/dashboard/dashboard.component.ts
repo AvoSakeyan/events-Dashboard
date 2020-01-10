@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthoService} from '../../../Service/autho.service';
+import {EventService} from '../../../Service/event.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import {AuthoService} from '../../../Service/autho.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private service: AuthoService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
   }

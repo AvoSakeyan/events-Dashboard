@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {GetdataService} from '../../../Service/getdata.service';
+import {EventService} from '../../../Service/event.service';
 
 
 
@@ -16,7 +16,7 @@ export class CreateComponent implements OnInit {
   eventTypes: any
 
   constructor(
-    private eventService: GetdataService,
+    private eventService: EventService,
   ) { }
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class CreateComponent implements OnInit {
   }
 
   getEventTypes() {
-    this.eventService.getEventType().subscribe(res => this.eventTypes = res)
+    this.eventService.getEventType().subscribe(res => this.eventTypes = res);
   }
 
   sendEventData() {
@@ -59,7 +59,7 @@ export class CreateComponent implements OnInit {
       return;
     }
     const sendData = {...this.createForm.value};
-    console.log(sendData);
+    // console.log(sendData);
 
     const createdData = {
       name: sendData.name,

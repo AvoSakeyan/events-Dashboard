@@ -6,8 +6,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 
-// To Do : change Service name to EventService
-export class GetdataService {
+
+export class EventService {
   private baseUrl = environment.baseURL;
 
   constructor(private http: HttpClient) {
@@ -21,8 +21,9 @@ export class GetdataService {
     });
   }
 
-  getEventType() {
-    return this.http.get(`${this.baseUrl}/eventTypes`, {
+
+  getEventById(id) {
+    return this.http.get(`${this.baseUrl}/events/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -31,6 +32,14 @@ export class GetdataService {
 
   createAnEvent(event) {
     return this.http.post(`${this.baseUrl}/events`, event, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
+  getEventType() {
+    return this.http.get(`${this.baseUrl}/eventTypes`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

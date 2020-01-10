@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthoService} from '../Service/autho.service';
 import {Router} from '@angular/router';
+import {error} from 'util';
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +11,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
    form: FormGroup
+  errMessage: any;
+
   constructor(
     private mainService: AuthoService,
     private router: Router
@@ -46,6 +49,12 @@ export class LoginComponent implements OnInit {
             } else {
               this.router.navigate(['clientDashboard']);
             }
+          },
+          // tslint:disable-next-line:no-shadowed-variable
+          error => {
+            console.log(error);
+            this.errMessage = error.error.message;
+            console.log(this.errMessage);
           });
      }
   }

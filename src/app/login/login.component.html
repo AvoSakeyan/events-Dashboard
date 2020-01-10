@@ -37,6 +37,13 @@
       class="btn btn-success"
       [disabled]="form.invalid"
     > LogIn</button>
+
+    <!--  ==========  ErrorMessage  Part ========-->
+
+      <div class="errMessage" *ngIf="errMessage">
+        <span><strong>{{errMessage}}</strong></span>
+      </div>
+
   </form>
 
 

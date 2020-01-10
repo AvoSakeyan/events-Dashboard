@@ -59,6 +59,7 @@ body {
     #desc {
       background-color: #545453;
       transition: 0.7s ease;
+      border-radius: 1rem;
     }
   }
 
@@ -72,6 +73,7 @@ body {
 
 .card-content {
     margin-bottom: .5rem;
+    border-radius: 1rem;
   }
 
 //====== Button style ========================================
@@ -147,7 +149,7 @@ body {
 
   .validation {
     color: var(--primary-color);
-  }
+    }
 }
 
 input[type='text'],
@@ -175,6 +177,7 @@ table td {
   padding: 0.8rem;
   text-align: left;
   background-color: #4e5a4c;
+  max-width: 200px;
 }
 
 table th {

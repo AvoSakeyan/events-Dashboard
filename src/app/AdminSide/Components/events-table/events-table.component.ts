@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GetdataService} from '../../../Service/getdata.service';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {EventService} from '../../../Service/event.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-events-table',
@@ -8,10 +9,19 @@ import {GetdataService} from '../../../Service/getdata.service';
 })
 export class EventsTableComponent implements OnInit {
   events: any;
-  createModal = false;
+  editEvent = false;
   eventsType: any;
+  createModal = false;
+  eventGrid: boolean;
+  errMessage: any;
+  tableEvent;
+  tableEventType;
 
-  constructor(private eventService: GetdataService) { }
+  constructor(
+    private eventService: EventService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
     this.getEventsData();
@@ -30,10 +40,23 @@ export class EventsTableComponent implements OnInit {
     });
   }
 
+
+  editAnEvent(event, eventsType) {
+      this.editEvent = true;
+      this.tableEvent = event;
+      this.tableEventType = eventsType;
+  }
+
+
   deleteEvent(id) {
+    if (this.events.length === 1) {
+      this.errMessage = 'Can\'t delete the row when there is only one row';
+      return false;
+    }
     this.eventService.deleteEvent(id).subscribe(() => {
       console.log('Event deleted');
     });
-    this.getEventsData();
   }
 }
+
+

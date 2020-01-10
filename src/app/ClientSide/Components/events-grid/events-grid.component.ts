@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GetdataService} from '../../../Service/getdata.service';
+import {EventService} from '../../../Service/event.service';
 
 @Component({
   selector: 'app-events-grid',
@@ -9,7 +9,7 @@ import {GetdataService} from '../../../Service/getdata.service';
 export class EventsGridComponent implements OnInit {
   events: any;
 
-  constructor(private getEventsService: GetdataService) {
+  constructor(private getEventsService: EventService) {
   }
 
   ngOnInit() {

@@ -1,0 +1,70 @@
+<div class="darkenTheBackground"></div>
+
+<div class="modal">
+  <form [formGroup]="createForm">
+
+    <!--  ========== Name Part =========-->
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" [value]="indEvent.name" disabled = "disabled"   >
+      <div
+        class="validation"
+        *ngIf="createForm.get('name').touched && createForm.get('name').invalid"
+      >
+        <small *ngIf="createForm.get('name').errors.required">Name is required </small>
+        <small *ngIf="createForm.get('name').errors.minlength">
+          Name should be minimum
+          {{createForm.get('name').errors.minlength.requiredLength}}
+          and maximum 12 symbols.
+        </small>
+      </div>
+    </div>
+
+    <!--  ========== Description Part =========-->
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description"  type="text" cols="5" rows="5" formControlName="description" [value]="indEvent.description"></textarea>
+      <div
+        class="validation"
+        *ngIf="createForm.get('description').touched && createForm.get('description').invalid"
+      >
+        <small *ngIf="createForm.get('description').errors.required">Description is required </small>
+        <small *ngIf="createForm.get('description').errors.minlength">
+          Name should be minimum
+          {{createForm.get('description').errors.minlength.requiredLength}}
+          and maximum 100 symbols.
+        </small>
+      </div>
+    </div>
+    <!--  ========== Date Part =========-->
+    <div>
+      <label for="date">Date</label>
+      <input id="date" type="date" formControlName="date" [value]="indEvent.date">
+      <div
+        class="validation"
+        *ngIf="createForm.get('date').touched && createForm.get('date').invalid"
+      >
+        <small *ngIf="createForm.get('date').errors.required">Date is required </small>
+      </div>
+    </div>
+
+    <!--  ========== Event Type Part =========-->
+
+    <div>
+      <label for="type">Type
+        <input type="text" id="type" [value]="indEventType.type"  formControlName="eventType" disabled = "disabled" >
+      </label>
+      <div
+        class="validation"
+        *ngIf="createForm.get('eventType').touched && createForm.get('eventType').invalid"
+      >
+        <small *ngIf="createForm.get('eventType').errors.required">Type is required </small>
+      </div>
+    </div>
+
+
+  </form>
+
+  <button class="btn space" (click)="close.emit()">Close</button>
+<!--  <button class="btn space" (click)="sendEventData()"> Save </button>-->
+</div>

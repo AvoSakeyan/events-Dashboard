@@ -5,6 +5,8 @@ import {SharedModule} from '../Shared/shared.module';
 import {CommonModule} from '@angular/common';
 import { CreateComponent } from './Components/create/create.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ClientModule} from '../ClientSide/client.module';
+import { EditComponent } from './Components/edit/edit.component';
 
 
 @NgModule({
@@ -12,11 +14,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     EventsTableComponent,
     DashboardComponent,
     CreateComponent,
+    EditComponent,
   ],
   imports: [
     SharedModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClientModule
   ],
   exports: [
     DashboardComponent
