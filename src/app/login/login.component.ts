@@ -10,15 +10,16 @@ import {error} from 'util';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-   form: FormGroup
+  form: FormGroup
   errMessage: any;
 
-  constructor(
-    private mainService: AuthoService,
-    private router: Router
-    ) { }
+  constructor(private mainService: AuthoService, private router: Router) { }
 
   ngOnInit() {
+    this.formValidation();
+  }
+
+  formValidation() {
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
@@ -40,7 +41,6 @@ export class LoginComponent implements OnInit {
       this.mainService.login(logInData)
         .subscribe(
           (response: any) => {
-            console.log(response);
             localStorage.setItem('token', response.token);
             localStorage.setItem('username', response.user.name);
             if (response.user.isAdmin) {
@@ -52,9 +52,7 @@ export class LoginComponent implements OnInit {
           },
           // tslint:disable-next-line:no-shadowed-variable
           error => {
-            console.log(error);
             this.errMessage = error.error.message;
-            console.log(this.errMessage);
           });
      }
   }

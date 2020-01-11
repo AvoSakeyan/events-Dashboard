@@ -1,25 +1,27 @@
-  <div class="container">
-          <h2 class="event-heading"><strong>Events List</strong> </h2>
-    <span class="errMessage" >
-      <p>{{errMessage}}</p>
-    </span>
-    <span class="event-create">
-      <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
-      <button class="btn" (click)="eventGrid = true">EventCards</button>
-      <app-create
-        *ngIf= "createModal"
-        title="Create modal"
-        (close)="createModal = false"
-      ></app-create>
-        <app-edit
-          *ngIf= "editEvent"
-          (close) = "editEvent = false"
-          [indEvent] = "tableEvent"
-          [indEventType] = "tableEventType"
-        ></app-edit>
-    </span>
-    <table>
-      <thead>
+<div class="container">
+    <h2 class="event-heading"><strong>Event's List</strong> </h2>
+  <span class="errMessage">
+    <p>{{errMessage}}</p>
+  </span>
+  <span class="event-create">
+    <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
+  </span>
+
+    <app-create
+      *ngIf= "createModal"
+      title="Create modal"
+      (close)="createModal = false"
+    ></app-create>
+
+      <app-edit
+        *ngIf= "editEvent"
+        (close) = "editEvent = false"
+        [indEvent] = "tableEvent"
+        [indEventType] = "tableEventType"
+      ></app-edit>
+
+  <table>
+    <thead>
       <tr>
         <th>Name</th>
         <th>Description</th>
@@ -27,23 +29,18 @@
         <th>Event Type</th>
         <th>Action</th>
       </tr>
-      </thead>
-      <tbody>
+    </thead>
+    <tbody>
       <tr *ngFor="let event of events">
         <td>{{event.name}}</td>
         <td>{{event.description}}</td>
         <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
         <td>{{eventsType[event.eventType-1].type}}</td>
         <td>
-          <button class="btn" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
-          <button class="btn" (click)="deleteEvent(event.id)">Delete</button>
+          <button class="btn btn-create" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
+          <button class="btn btn-danger" (click)="deleteEvent(event.id)">Delete</button>
         </td>
       </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-<app-events-grid
-  *ngIf="eventGrid"
-></app-events-grid>
+    </tbody>
+  </table>
+</div>

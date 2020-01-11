@@ -17,8 +17,6 @@ import {CommonModule} from '@angular/common';
     CommonModule
   ],
   exports: [
-    ClientdashboardComponent,
-    EventsGridComponent
   ]
 })
 

@@ -14,9 +14,11 @@ export class EventsGridComponent implements OnInit {
 
   ngOnInit() {
     this.getEvents();
+
   }
 
   getEvents() {
     this.getEventsService.getEvents().subscribe(res => this.events = res);
   }
+
 }

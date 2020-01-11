@@ -7,17 +7,14 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 
-//To do: gettoken();
 export class AuthoService {
   private baseUrl = environment.baseURL;
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(data) {
    return  this.http.post(`${this.baseUrl}/login`, {email: data.email, password: data.password});
   }
-
 
   isAdminUser() {
     return !!localStorage.getItem('isAdmin');
@@ -31,6 +28,4 @@ export class AuthoService {
     localStorage.clear();
     this.router.navigate((['/login']));
   }
-
-
 }

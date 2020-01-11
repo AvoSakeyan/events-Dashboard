@@ -9,48 +9,33 @@ import {HttpClient} from '@angular/common/http';
 
 export class EventService {
   private baseUrl = environment.baseURL;
-
-  constructor(private http: HttpClient) {
+  getToken = {
+    Authorization: `Bearer ${localStorage.getItem('token')}`
   }
+
+  constructor(private http: HttpClient) {}
 
   getEvents() {
     return this.http.get(`${this.baseUrl}/events`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-  }
-
-
-  getEventById(id) {
-    return this.http.get(`${this.baseUrl}/events/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      headers: this.getToken
     });
   }
 
   createAnEvent(event) {
     return this.http.post(`${this.baseUrl}/events`, event, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      headers: this.getToken
     });
   }
 
   getEventType() {
     return this.http.get(`${this.baseUrl}/eventTypes`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      headers: this.getToken
     });
   }
 
   deleteEvent(id: number) {
     return this.http.delete<void>(`${this.baseUrl}/events/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      headers: this.getToken
     });
   }
 }

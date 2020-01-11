@@ -17,7 +17,6 @@ export class NonAdminGuard implements CanActivate {
     if (!this.mainService.isAdminUser()) {
       return true;
     }
-    // @ts-ignore
     this.router.navigate(['/clientDashboard'])
     return false;
   }

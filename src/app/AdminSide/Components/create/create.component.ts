@@ -2,30 +2,27 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventService} from '../../../Service/event.service';
 
-
-
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
 })
+
 export class CreateComponent implements OnInit {
   @Output() close = new EventEmitter()
   createForm: any = FormGroup;
   events: any;
   eventTypes: any
 
-  constructor(
-    private eventService: EventService,
-  ) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.createValidation();
-    this.getEventData();
+    this.formValidation();
+    this.getEvents();
     this.getEventTypes();
   }
 
-  createValidation() {
+  formValidation() {
     this.createForm = new FormGroup({
       name: new FormControl(null, [
         Validators.required,
@@ -46,7 +43,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  getEventData() {
+  getEvents() {
     this.eventService.getEvents().subscribe(res => this.events = res);
   }
 
@@ -59,8 +56,6 @@ export class CreateComponent implements OnInit {
       return;
     }
     const sendData = {...this.createForm.value};
-    // console.log(sendData);
-
     const createdData = {
       name: sendData.name,
       description: sendData.description,
@@ -71,6 +66,6 @@ export class CreateComponent implements OnInit {
     this.eventService.createAnEvent(createdData).subscribe(() => {
       console.log('Event Created');
     });
-    this.getEventData();
+    this.getEvents();
   }
 }

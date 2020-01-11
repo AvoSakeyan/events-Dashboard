@@ -23,7 +23,6 @@ import { EditComponent } from './Components/edit/edit.component';
     ClientModule
   ],
   exports: [
-    DashboardComponent
   ]
 })
 

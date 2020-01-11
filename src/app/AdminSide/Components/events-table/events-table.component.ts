@@ -9,32 +9,28 @@ import {Router} from '@angular/router';
 })
 export class EventsTableComponent implements OnInit {
   events: any;
-  editEvent = false;
   eventsType: any;
+  editEvent = false;
   createModal = false;
-  eventGrid: boolean;
-  errMessage: any;
   tableEvent;
   tableEventType;
+  errMessage: any;
 
-  constructor(
-    private eventService: EventService,
-    private router: Router
-  ) {
+  constructor(private eventService: EventService) {
   }
 
   ngOnInit() {
-    this.getEventsData();
-    this.getEventsTypes();
+    this.getEvents();
+    this.getEventTypes();
   }
 
-  getEventsData() {
+  getEvents() {
     this.eventService.getEvents().subscribe(res => {
       this.events = res;
     });
   }
 
-  getEventsTypes() {
+  getEventTypes() {
     this.eventService.getEventType().subscribe(res => {
       this.eventsType = res;
     });

@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
 
   createValidation() {
     this.createForm = new FormGroup({
-      name: new FormControl({disabled: true}, [
+      name: new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(12)
@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
         Validators.minLength(10),
         Validators.maxLength(100)
       ]),
-      eventType: new FormControl({disabled: true}, [
+      eventType: new FormControl(null, [
         Validators.required
       ]),
       date: new FormControl({disabled: true}, [
@@ -56,5 +56,24 @@ export class EditComponent implements OnInit {
   getEventTypes() {
     this.eventService.getEventType().subscribe(res => this.eventTypes = res);
   }
+
+  saveChangedEvent(id) {
+      const changedEvent = {...this.createForm.value};
+
+
+      const newChngEvent = {
+        name: this.indEvent.name,
+        description: changedEvent.description,
+        eventType: +this.indEvent.eventType,
+        date: changedEvent.date,
+      };
+      console.log(newChngEvent);
+
+      this.close.emit();
+      this.eventService.updateAnEvent(id, newChngEvent ).subscribe(() => {
+        console.log('Event Updated');
+      });
+      this.getEvent();
+    }
 
 }
