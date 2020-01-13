@@ -50,11 +50,12 @@ export class EventsTableComponent implements OnInit {
 
   }
 
-  deleteEvent(id) {
+  deleteEvent(id, i) {
     if (this.events.length === 1) {
       this.errMessage = 'Can\'t delete the row when there is only one row';
       return false;
     }
+    this.events.splice(i, 1);
     this.eventService.deleteEvent(id).subscribe(() => {
       console.log('Event deleted');
     });

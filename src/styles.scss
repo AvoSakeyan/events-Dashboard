@@ -40,7 +40,7 @@ body {
 
 .container {
   max-width: 1500px;
-  margin: 10rem auto;
+  margin: 5rem auto;
   overflow: hidden;
   padding: 0 3rem;
 }
@@ -50,32 +50,29 @@ body {
 .card {
   display:inline-block;
   padding: 1rem;
-  border: #324f58 1px dotted;
   border-radius: 5px;
   margin: 0.7rem 1rem;
   height: 250px;
   width: 250px;
   background: url("assets/Images/rainy.jpg");
   overflow: hidden;
-
-}
-
-.card:hover {
-    border: #660a11 2px dotted;
+  &:hover {
     width: 250px;
     height: 250px;
     transition: 0.3s ease;
     h2 {
-      color: #8e0000;
+      color: rgb(142, 0, 0);
       transition: 0.7s ease;
     }
     #desc {
       color: #7a1114;
-      background-color: #63848e;
+      background-color: rgba(99, 132, 142,0.5);
       transition: 0.7s ease;
       border-radius: 1rem;
     }
   }
+
+}
 
 .card-header {
     display: flex;

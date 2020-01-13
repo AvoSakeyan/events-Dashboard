@@ -75,7 +75,6 @@ export class EditComponent implements OnInit{
       this.eventService.updateAnEvent(id, newChngEvent ).subscribe(() => {
         console.log('Event Updated');
       });
-      this.getEvent();
     }
 
 }

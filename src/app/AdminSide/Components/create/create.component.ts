@@ -58,12 +58,11 @@ export class CreateComponent implements OnInit {
     }
     const sendData = {...this.createForm.value};
     const createdData = {
-      name: sendData.name,
-      description: sendData.description,
-      eventType: +sendData.eventType,
-      date: sendData.date,
+        name: sendData.name,
+        description: sendData.description,
+        eventType: +sendData.eventType,
+        date: sendData.date,
     };
-    // this.events.push(createdData);
     this.eventService.dataUpdate.next(createdData)
     this.close.emit();
     this.eventService.createAnEvent(createdData).subscribe(() => {

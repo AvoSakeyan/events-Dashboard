@@ -20,7 +20,7 @@ export class EventDetailsComponent implements OnInit {
 getEventType() {
     this.eventService.getEventType().subscribe(res => {
       this.eventType = res;
-      console.log(res);
+      // console.log(res);
     });
 }
 
