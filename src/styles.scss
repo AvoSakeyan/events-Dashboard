@@ -19,15 +19,27 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
   line-height: 1.6;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("Images/Triangular White Background.jpg") no-repeat fixed;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("assets/Images/lines.jpg") no-repeat fixed;
   background-size: 100% 100%;
-  color:darkseagreen;
+  color: #7dab7d;
   z-index: 0;
   text-align: center;
 }
 
+//body:after {
+//  content: "";
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  display: block;
+//  background: rgba(255, 255, 255, .4);
+//  width: 100%;
+//  height: 100%;
+//  z-index: -1;
+//}
+
 .container {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 10rem auto;
   overflow: hidden;
   padding: 0 3rem;
@@ -38,26 +50,28 @@ body {
 .card {
   display:inline-block;
   padding: 1rem;
-  border: #666666 1px dotted;
+  border: #324f58 1px dotted;
   border-radius: 5px;
   margin: 0.7rem 1rem;
-  min-height: 250px;
+  height: 250px;
   width: 250px;
+  background: url("assets/Images/rainy.jpg");
+  overflow: hidden;
 
 }
 
 .card:hover {
-    border: #660a11 1px dotted;
-    background-color: #484846;
-    width: 260px;
-    min-height: 255px;
+    border: #660a11 2px dotted;
+    width: 250px;
+    height: 250px;
     transition: 0.3s ease;
     h2 {
-      color: #954015;
+      color: #8e0000;
       transition: 0.7s ease;
     }
     #desc {
-      background-color: #545453;
+      color: #7a1114;
+      background-color: #63848e;
       transition: 0.7s ease;
       border-radius: 1rem;
     }
@@ -177,12 +191,12 @@ table th,
 table td {
   padding: 1.2rem;
   text-align: left;
-  background-color: #4e5a4c;
+  background-color: #275055;
   max-width: 200px;
 }
 
 table th {
-  background: darkslategrey;
+  background: #3a4958;
 }
 
 //====== NavBar style ===========================

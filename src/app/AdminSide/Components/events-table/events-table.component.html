@@ -1,9 +1,14 @@
-<div class="container">
+<button class ="btn btn-toggle" (click)="switchComponents()">Switch View</button>
+
+<app-events-grid *ngIf="switchDashboardToggle"></app-events-grid>
+
+<div class="container" *ngIf="eventsType && switchDashboardToggle1"  >
     <h2 class="event-heading"><strong>Event's List</strong> </h2>
   <span class="errMessage">
-    <p>{{errMessage}}</p>
+    <p><strong>{{errMessage}}</strong></p>
   </span>
   <span class="event-create">
+
     <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
   </span>
 
@@ -20,7 +25,9 @@
         [indEventType] = "tableEventType"
       ></app-edit>
 
-  <table>
+
+
+  <table #tableDashboard>
     <thead>
       <tr>
         <th>Name</th>

@@ -36,7 +36,9 @@
   <!--  ========== Date Part =========-->
   <div>
     <label for="date">Date</label><br>
-    <input id="date" type="datetime-local" formControlName="date" >
+    <input id="date" type="datetime-local"
+           formControlName="date"
+           min="{{today | date:'yyyy-MM-dd'}}T{{today| date:'hh:mm'}}" >
     <div class="validation"
       *ngIf="createForm.get('date').touched && createForm.get('date').invalid">
       <small *ngIf="createForm.get('date').errors.required">Date is required </small>

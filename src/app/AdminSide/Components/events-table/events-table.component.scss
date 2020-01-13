@@ -51,7 +51,7 @@
   position: absolute;
   margin: 0 auto;
   width: 150px;
-  color: darkseagreen;
+  color: #8e0000;
   font-weight: normal;
   font-size: 25px;
   line-height: 40px;
@@ -69,6 +69,15 @@
 }
 
 .btn-create:hover {
+  background-color: darkolivegreen;
+  color: antiquewhite;
+}
+
+.btn-toggle {
+
+}
+
+.btn-toggle:hover {
   background-color: darkolivegreen;
   color: antiquewhite;
 }

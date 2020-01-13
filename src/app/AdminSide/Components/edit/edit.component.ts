@@ -8,12 +8,13 @@ import {EventService} from '../../../Service/event.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit{
   @Output() close = new EventEmitter();
   @Input() indEvent;
   @Input() indEventType;
-  events: any;
-  eventTypes: any
+  today = Date.now();
+  events;
+  eventTypes;
   private createForm: FormGroup;
 
   constructor(
@@ -26,22 +27,25 @@ export class EditComponent implements OnInit {
     this.createValidation();
   }
 
+
+
+
   createValidation() {
     this.createForm = new FormGroup({
-      name: new FormControl(null, [
+      name: new FormControl({value: this.indEvent.name, disabled: true}, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(12)
       ]),
-      description: new FormControl({disabled: true}, [
+      description: new FormControl({value: this.indEvent.description, disabled: false}, [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(100)
       ]),
-      eventType: new FormControl(null, [
+      date: new FormControl({value: this.indEvent.date, disabled: false}, [
         Validators.required
       ]),
-      date: new FormControl({disabled: true}, [
+      eventType: new FormControl({value: this.indEvent.eventType, disabled: true}, [
         Validators.required
       ]),
     });
@@ -59,13 +63,11 @@ export class EditComponent implements OnInit {
 
   saveChangedEvent(id) {
       const changedEvent = {...this.createForm.value};
-
-
       const newChngEvent = {
         name: this.indEvent.name,
         description: changedEvent.description,
         eventType: +this.indEvent.eventType,
-        date: changedEvent.date,
+        date: changedEvent.date
       };
       console.log(newChngEvent);
 

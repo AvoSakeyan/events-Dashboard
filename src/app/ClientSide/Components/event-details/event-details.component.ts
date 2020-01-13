@@ -8,13 +8,20 @@ import {EventService} from '../../../Service/event.service';
 })
 export class EventDetailsComponent implements OnInit {
     @Input() singleEvent: any;
-    @Input() singleEventType: any;
+    eventType;
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.getEventType();
+    // console.log(this.singleEvent);
   }
 
-
+getEventType() {
+    this.eventService.getEventType().subscribe(res => {
+      this.eventType = res;
+      console.log(res);
+    });
+}
 
 }

@@ -11,8 +11,9 @@ import {EventService} from '../../../Service/event.service';
 export class CreateComponent implements OnInit {
   @Output() close = new EventEmitter()
   createForm: any = FormGroup;
-  events: any;
-  eventTypes: any
+  events;
+  eventTypes;
+  today = Date.now();
 
   constructor(private eventService: EventService) { }
 
@@ -62,10 +63,14 @@ export class CreateComponent implements OnInit {
       eventType: +sendData.eventType,
       date: sendData.date,
     };
+    // this.events.push(createdData);
+    this.eventService.dataUpdate.next(createdData)
     this.close.emit();
     this.eventService.createAnEvent(createdData).subscribe(() => {
       console.log('Event Created');
     });
     this.getEvents();
   }
+
+
 }

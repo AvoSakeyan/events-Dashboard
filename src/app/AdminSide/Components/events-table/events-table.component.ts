@@ -12,16 +12,22 @@ export class EventsTableComponent implements OnInit {
   eventsType: any;
   editEvent = false;
   createModal = false;
+  switchDashboardToggle = false;
+  switchDashboardToggle1 = true;
   tableEvent;
   tableEventType;
   errMessage: any;
 
-  constructor(private eventService: EventService) {
+
+  constructor(private eventService: EventService, private router: Router) {
   }
 
   ngOnInit() {
     this.getEvents();
     this.getEventTypes();
+    this.eventService.dataUpdate.subscribe(res => {
+      this.events.push(res);
+    });
   }
 
   getEvents() {
@@ -41,8 +47,8 @@ export class EventsTableComponent implements OnInit {
       this.editEvent = true;
       this.tableEvent = event;
       this.tableEventType = eventsType;
-  }
 
+  }
 
   deleteEvent(id) {
     if (this.events.length === 1) {
@@ -52,6 +58,11 @@ export class EventsTableComponent implements OnInit {
     this.eventService.deleteEvent(id).subscribe(() => {
       console.log('Event deleted');
     });
+  }
+
+  switchComponents() {
+    this.switchDashboardToggle = !this.switchDashboardToggle;
+    this.switchDashboardToggle1 = !this.switchDashboardToggle1;
   }
 }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 
 export class EventService {
   private baseUrl = environment.baseURL;
+  dataUpdate = new Subject();
   getToken = {
     Authorization: `Bearer ${localStorage.getItem('token')}`
   }
@@ -27,6 +29,12 @@ export class EventService {
     });
   }
 
+  updateAnEvent(id, event) {
+    return this.http.put<void>(`${environment.baseURL}/events/${id}`, event, {
+      headers: this.getToken
+    });
+  }
+
   getEventType() {
     return this.http.get(`${this.baseUrl}/eventTypes`, {
       headers: this.getToken
@@ -38,4 +46,5 @@ export class EventService {
       headers: this.getToken
     });
   }
+
 }
