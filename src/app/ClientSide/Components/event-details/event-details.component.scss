@@ -1,17 +1,17 @@
-.date {
+h1  {
+  color: #24303f;
+}
+
+small {
   display: flex;
-  justify-content: space-between;
-  margin-top: 3rem;
+  justify-content: left;
 }
 
-h2  {
-  color: #663536;
+p{
+  color: #313d4c;
+  border-radius: 5px;
 }
 
-p {
-  color: #0a4b41;
+#desc {
+  background: #666666;
 }
-#desc{
-  color: #0a4b41;
-}
-

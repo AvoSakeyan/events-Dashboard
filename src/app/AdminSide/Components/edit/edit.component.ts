@@ -8,18 +8,16 @@ import {EventService} from '../../../Service/event.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit{
+export class EditComponent implements OnInit {
   @Output() close = new EventEmitter();
   @Input() indEvent;
   @Input() indEventType;
   today = Date.now();
   events;
   eventTypes;
-  private createForm: FormGroup;
+  createForm: FormGroup;
 
-  constructor(
-    private eventService: EventService,
-  ) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.getEvent();
@@ -27,9 +25,7 @@ export class EditComponent implements OnInit{
     this.createValidation();
   }
 
-
-
-
+// ==========  Validation for Create inputs==========
   createValidation() {
     this.createForm = new FormGroup({
       name: new FormControl({value: this.indEvent.name, disabled: true}, [
@@ -51,9 +47,10 @@ export class EditComponent implements OnInit{
     });
   }
 
+  // ========== GET Events and Event Types ==========
   getEvent() {
     this.eventService.getEvents().subscribe(res => {
-    this.events = res;
+      this.events = res;
     });
 }
 
@@ -61,6 +58,7 @@ export class EditComponent implements OnInit{
     this.eventService.getEventType().subscribe(res => this.eventTypes = res);
   }
 
+// ========== Update Button  ==========
   saveChangedEvent(id) {
       const changedEvent = {...this.createForm.value};
       const newChngEvent = {
@@ -69,12 +67,7 @@ export class EditComponent implements OnInit{
         eventType: +this.indEvent.eventType,
         date: changedEvent.date
       };
-      console.log(newChngEvent);
-
+      this.eventService.updateAnEvent(id, newChngEvent ).subscribe();
       this.close.emit();
-      this.eventService.updateAnEvent(id, newChngEvent ).subscribe(() => {
-        console.log('Event Updated');
-      });
-    }
-
+  }
 }

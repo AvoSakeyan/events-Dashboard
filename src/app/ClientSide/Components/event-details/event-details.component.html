@@ -1,14 +1,21 @@
-<div class="card" *ngIf="eventType">
+<div class="cards" *ngIf="eventType">
+
   <div class="card-header">
-    <h2>{{singleEvent.name}}</h2>
+    <h1>{{singleEvent.name}}</h1>
+  </div>
+
+  <div class="card-content">
+    <small><em>Event Type</em></small>
     <p><strong>{{eventType[singleEvent.eventType - 1].type}}</strong></p>
   </div>
 
   <div class="card-content">
+    <small><em>Event Description</em></small>
     <p id="desc" [title]="singleEvent.description"> {{singleEvent.description}}</p>
   </div>
 
-  <div class="date">
+  <div class="card-content">
+    <small><em>Event Date</em></small>
     <p><strong>{{singleEvent.date | date:'dd-MM-yyyy'}}</strong></p>
   </div>
 </div>

@@ -7,50 +7,11 @@
   background: rgba(0, 0, 0, .5);
 }
 
-.modal {
-  padding: 1rem;
-  background: #fff;
-  margin-top: -3rem;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  border-radius: 1rem;
-}
-
-.modal input {
-  width: 300px;
-  margin: 0 0 0.5rem 0;
-  &.ng-invalid.ng-touched {
-    border: 1px solid #ca0000;
-  }
-
-  &.ng-valid {
-    border: 1px solid green;
-  }
-}
-
-.modal textarea {
-  width: 300px;
-  margin: 0 0 0.5rem 0;
-  &.ng-invalid.ng-touched {
-    border: 1px solid #ca0000;
-  }
-
-  &.ng-valid {
-    border: 1px solid green;
-  }
-}
-
-.modal small {
-  color: #ca0000;
-  margin: 0 0 0.5rem 0;
-}
-
-
-.event-heading {
-  position: absolute;
-  margin: 0 auto;
-  width: 150px;
+//============== Table Title and Create button==================
+.table-heading {
+  float: left;
+  margin: 0.3rem auto;
+  max-width: 1500px;
   color: #fafbff;
   font-weight: normal;
   font-size: 25px;
@@ -63,6 +24,7 @@
   margin: 0.5rem auto;
 }
 
+//=====Button Create====
 .btn-create {
   background-color: darkcyan;
   color: darkred;
@@ -73,15 +35,13 @@
   color: antiquewhite;
 }
 
-.btn-toggle {
-
-}
-
-.btn-toggle:hover {
+//=========== Switch button  =========
+.btn-switch:hover {
   background-color: darkolivegreen;
   color: antiquewhite;
 }
 
+//=========== Error Message  =========
 .errMessage {
   color: #7a1114;
   text-align: right;

@@ -10,12 +10,12 @@ import {Subject} from 'rxjs';
 
 export class EventService {
   private baseUrl = environment.baseURL;
-  dataUpdate = new Subject();
-  getToken = {
+  createdDataUpdate = new Subject();
+
+    constructor(private http: HttpClient) {}
+getToken = {
     Authorization: `Bearer ${localStorage.getItem('token')}`
   }
-
-  constructor(private http: HttpClient) {}
 
   getEvents() {
     return this.http.get(`${this.baseUrl}/events`, {

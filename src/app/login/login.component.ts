@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthoService} from '../Service/autho.service';
 import {Router} from '@angular/router';
-import {error} from 'util';
 
 @Component({
   selector: 'app-login-page',
@@ -19,6 +18,7 @@ export class LoginComponent implements OnInit {
     this.formValidation();
   }
 
+// ========== Validation for Form inputs =============
   formValidation() {
     this.form = new FormGroup({
       email: new FormControl(null, [
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // ============ Log In button , and getting token and username ========
   submit() {
     if (this.form.invalid) {
       return;
@@ -50,7 +51,6 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['clientDashboard']);
             }
           },
-          // tslint:disable-next-line:no-shadowed-variable
           error => {
             this.errMessage = error.error.message;
           });

@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class EventsTableComponent implements OnInit {
   events: any;
   eventsType: any;
-  editEvent = false;
+  editmodal = false;
   createModal = false;
   switchDashboardToggle = false;
   switchDashboardToggle1 = true;
@@ -25,31 +25,35 @@ export class EventsTableComponent implements OnInit {
   ngOnInit() {
     this.getEvents();
     this.getEventTypes();
-    this.eventService.dataUpdate.subscribe(res => {
-      this.events.push(res);
-    });
+    this.updateEventsDinamically();
   }
 
+  // ========== Get Events, Update Dinamically and Event Types =============
   getEvents() {
     this.eventService.getEvents().subscribe(res => {
       this.events = res;
     });
   }
-
   getEventTypes() {
     this.eventService.getEventType().subscribe(res => {
       this.eventsType = res;
     });
   }
 
-
-  editAnEvent(event, eventsType) {
-      this.editEvent = true;
-      this.tableEvent = event;
-      this.tableEventType = eventsType;
-
+  updateEventsDinamically() {
+    this.eventService.createdDataUpdate.subscribe(res => {
+      this.events.push(res);
+    });
   }
 
+// =========== Open Edit Modal, and sending data =======
+  editAnEvent(event, eventsType) {
+      this.editmodal = true;
+      this.tableEvent = event;
+      this.tableEventType = eventsType;
+  }
+
+  // ============== Delete event dinamically=========
   deleteEvent(id, i) {
     if (this.events.length === 1) {
       this.errMessage = 'Can\'t delete the row when there is only one row';
@@ -61,6 +65,7 @@ export class EventsTableComponent implements OnInit {
     });
   }
 
+  // ========= Switch Button ========
   switchComponents() {
     this.switchDashboardToggle = !this.switchDashboardToggle;
     this.switchDashboardToggle1 = !this.switchDashboardToggle1;

@@ -9,7 +9,7 @@ import {EventService} from '../../../Service/event.service';
 })
 
 export class CreateComponent implements OnInit {
-  @Output() close = new EventEmitter()
+  @Output() close = new EventEmitter();
   createForm: any = FormGroup;
   events;
   eventTypes;
@@ -23,6 +23,7 @@ export class CreateComponent implements OnInit {
     this.getEventTypes();
   }
 
+// ==========  Validation for Create inputs==========
   formValidation() {
     this.createForm = new FormGroup({
       name: new FormControl(null, [
@@ -44,6 +45,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
+// ========== GET Events and Event Types ==========
   getEvents() {
     this.eventService.getEvents().subscribe(res => this.events = res);
   }
@@ -52,6 +54,7 @@ export class CreateComponent implements OnInit {
     this.eventService.getEventType().subscribe(res => this.eventTypes = res);
   }
 
+  // ========== Send Create information ==========
   sendEventData() {
     if (this.createForm.invalid) {
       return;
@@ -63,13 +66,8 @@ export class CreateComponent implements OnInit {
         eventType: +sendData.eventType,
         date: sendData.date,
     };
-    this.eventService.dataUpdate.next(createdData)
+    this.eventService.createdDataUpdate.next(createdData)
     this.close.emit();
-    this.eventService.createAnEvent(createdData).subscribe(() => {
-      console.log('Event Created');
-    });
-    this.getEvents();
+    this.eventService.createAnEvent(createdData).subscribe();
   }
-
-
 }

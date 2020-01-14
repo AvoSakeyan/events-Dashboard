@@ -26,18 +26,6 @@ body {
   text-align: center;
 }
 
-//body:after {
-//  content: "";
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  display: block;
-//  background: rgba(255, 255, 255, .4);
-//  width: 100%;
-//  height: 100%;
-//  z-index: -1;
-//}
-
 .container {
   max-width: 1500px;
   margin: 5rem auto;
@@ -47,35 +35,19 @@ body {
 
 //====== Card style ========================================
 
-.card {
+.cards {
   display:inline-block;
-  padding: 1rem;
-  border-radius: 5px;
-  margin: 0.7rem 1rem;
-  height: 250px;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("assets/Images/1.jpg");
+  margin: 20px;
+  padding: 20px;
   width: 250px;
-  background: url("assets/Images/rainy.jpg");
+  height: 350px;
+  border-radius: 10px;
   overflow: hidden;
-  &:hover {
-    width: 250px;
-    height: 250px;
-    transition: 0.3s ease;
-    h2 {
-      color: rgb(142, 0, 0);
-      transition: 0.7s ease;
-    }
-    #desc {
-      color: #7a1114;
-      background-color: rgba(99, 132, 142,0.5);
-      transition: 0.7s ease;
-      border-radius: 1rem;
-    }
-  }
-
+  word-break: break-word;
 }
 
 .card-header {
-    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
@@ -83,9 +55,11 @@ body {
   }
 
 .card-content {
-    margin-bottom: .5rem;
-    border-radius: 1rem;
-  }
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #cccccc ;
+}
 
 //====== Button style ========================================
 
@@ -190,6 +164,7 @@ table td {
   text-align: left;
   background-color: #275055;
   max-width: 200px;
+  word-break: break-word;
 }
 
 table th {

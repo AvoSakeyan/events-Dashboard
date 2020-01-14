@@ -1,54 +1,58 @@
-<button class ="btn btn-toggle" (click)="switchComponents()">Switch View</button>
-
+<!--======= Go to Client's Dashboard View  =====-->
+<button class ="btn btn-switch" (click)="switchComponents()">Switch View</button>
 <app-events-grid *ngIf="switchDashboardToggle"></app-events-grid>
 
-<div class="container" *ngIf="eventsType && switchDashboardToggle1"  >
-    <h2 class="event-heading"><strong>Events' List</strong> </h2>
-  <span class="errMessage">
-    <p><strong>{{errMessage}}</strong></p>
-  </span>
-  <span class="event-create">
+<!--======= Event's table with heading  =====-->
+<div class="container" *ngIf="eventsType && switchDashboardToggle1">
+    <div class="table-heading" >
+      <h2><strong>Events' List</strong> </h2>
+    </div>
+    <span class="errMessage">
+      <p><strong>{{errMessage}}</strong></p>
+    </span>
+    <div class="event-create">
+          <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
+    </div>
 
-    <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
-  </span>
-
+<!--=======Create Modal =====-->
     <app-create
       *ngIf= "createModal"
       title="Create modal"
       (close)="createModal = false"
     ></app-create>
 
+  <!--=======Edit Modal =====-->
       <app-edit
-        *ngIf= "editEvent"
-        (close) = "editEvent = false"
+        *ngIf= "editmodal"
+        (close) = "editmodal = false"
         [indEvent] = "tableEvent"
         [indEventType] = "tableEventType"
       ></app-edit>
 
-
-
-  <table #tableDashboard>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Event Type</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let event of events; let i = index">
-        <td>{{event.name}}</td>
-        <td>{{event.description}}</td>
-        <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
-        <td>{{eventsType[event.eventType-1].type}}</td>
-        <td>
-          <button class="btn btn-create" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
-          <button class="btn btn-danger" (click)="deleteEvent(event.id, i)">Delete</button>
-<!--          <button class="btn btn-danger" (click)="deleteEventFielValue(i)">Delete</button>-->
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <!--=======Events' Table  =====-->
+  <div class="mainTable">
+    <table #tableDashboard>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Event Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events; let i = index">
+          <td>{{event.name}}</td>
+          <td>{{event.description}}</td>
+          <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
+          <td>{{eventsType[event.eventType-1].type}}</td>
+          <td>
+            <button class="btn btn-create" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
+            <button class="btn btn-danger" (click)="deleteEvent(event.id, i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

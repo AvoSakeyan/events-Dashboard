@@ -14,13 +14,11 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getEventType();
-    // console.log(this.singleEvent);
   }
 
 getEventType() {
     this.eventService.getEventType().subscribe(res => {
       this.eventType = res;
-      // console.log(res);
     });
 }
 
