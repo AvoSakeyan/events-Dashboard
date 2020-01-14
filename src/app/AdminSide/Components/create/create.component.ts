@@ -66,8 +66,9 @@ export class CreateComponent implements OnInit {
         eventType: +sendData.eventType,
         date: sendData.date,
     };
-    this.eventService.createdDataUpdate.next(createdData)
     this.close.emit();
-    this.eventService.createAnEvent(createdData).subscribe();
+    this.eventService.createAnEvent(createdData).subscribe(res => {
+      this.eventService.updateDataDynamically.next(res);
+    });
   }
 }

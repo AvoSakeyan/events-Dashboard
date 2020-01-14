@@ -13,15 +13,11 @@ export class EditComponent implements OnInit {
   @Input() indEvent;
   @Input() indEventType;
   today = Date.now();
-  events;
-  eventTypes;
   createForm: FormGroup;
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.getEvent();
-    this.getEventTypes();
     this.createValidation();
   }
 
@@ -47,17 +43,6 @@ export class EditComponent implements OnInit {
     });
   }
 
-  // ========== GET Events and Event Types ==========
-  getEvent() {
-    this.eventService.getEvents().subscribe(res => {
-      this.events = res;
-    });
-}
-
-  getEventTypes() {
-    this.eventService.getEventType().subscribe(res => this.eventTypes = res);
-  }
-
 // ========== Update Button  ==========
   saveChangedEvent(id) {
       const changedEvent = {...this.createForm.value};
@@ -67,7 +52,9 @@ export class EditComponent implements OnInit {
         eventType: +this.indEvent.eventType,
         date: changedEvent.date
       };
-      this.eventService.updateAnEvent(id, newChngEvent ).subscribe();
+      this.eventService.updateAnEvent(id, newChngEvent ).subscribe(res => {
+         this.eventService.updateDataDynamically.next(res);
+        });
       this.close.emit();
-  }
+    }
 }

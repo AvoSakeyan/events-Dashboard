@@ -7,11 +7,16 @@
     <div class="table-heading" >
       <h2><strong>Events' List</strong> </h2>
     </div>
+
     <span class="errMessage">
       <p><strong>{{errMessage}}</strong></p>
     </span>
-    <div class="event-create">
+
+    <div class="event-create-search">
           <button class="btn btn-create" (click)= "createModal = true">Create Event</button>
+    </div>
+    <div class="event-create-search">
+      <input type="text" placeholder="Search by Name ... " [(ngModel)]="search">
     </div>
 
 <!--=======Create Modal =====-->
@@ -42,11 +47,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let event of events; let i = index">
+        <tr *ngFor="let event of events | search: search; let i = index">
           <td>{{event.name}}</td>
           <td>{{event.description}}</td>
           <td>{{event.date |date: 'dd-MMMM-yyyy'}}</td>
-          <td>{{eventsType[event.eventType-1].type}}</td>
+          <td>{{eventsType[event.eventType-1].type }}</td>
           <td>
             <button class="btn btn-create" (click)="editAnEvent(event, eventsType[event.eventType-1])">Edit</button>
             <button class="btn btn-danger" (click)="deleteEvent(event.id, i)">Delete</button>

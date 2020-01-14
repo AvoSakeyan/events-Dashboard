@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {EventService} from '../../../Service/event.service';
 import {Router} from '@angular/router';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-events-table',
@@ -16,6 +17,7 @@ export class EventsTableComponent implements OnInit {
   switchDashboardToggle1 = true;
   tableEvent;
   tableEventType;
+  search = '';
   errMessage: any;
 
 
@@ -26,6 +28,7 @@ export class EventsTableComponent implements OnInit {
     this.getEvents();
     this.getEventTypes();
     this.updateEventsDinamically();
+
   }
 
   // ========== Get Events, Update Dinamically and Event Types =============
@@ -41,8 +44,20 @@ export class EventsTableComponent implements OnInit {
   }
 
   updateEventsDinamically() {
-    this.eventService.createdDataUpdate.subscribe(res => {
-      this.events.push(res);
+    this.eventService.updateDataDynamically.subscribe((res: any) => {
+      let createAction = true;
+      this.events.forEach((event, index) => {
+        // @ts-ignore
+        if (event.id === res.id) {
+          this.events[index] = res;
+          createAction = false;
+          return;
+        }
+      });
+
+      if (createAction) {
+        this.events.push(res);
+      }
     });
   }
 
@@ -60,9 +75,7 @@ export class EventsTableComponent implements OnInit {
       return false;
     }
     this.events.splice(i, 1);
-    this.eventService.deleteEvent(id).subscribe(() => {
-      console.log('Event deleted');
-    });
+    this.eventService.deleteEvent(id).subscribe();
   }
 
   // ========= Switch Button ========

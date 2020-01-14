@@ -2,8 +2,7 @@
   <h2>Log In</h2>
 
   <!--  ========== Email Part =========-->
-  <div class="form-control "
-  [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}">
+  <div class="form-control ">
   <label for="email">Email</label>
     <input id="email" type="email" formControlName="email">
     <div class="validation"
@@ -14,8 +13,7 @@
   </div>
 
 <!--  ==========  Password  Part ========-->
-  <div class="form-control "
-    [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}">
+  <div class="form-control">
     <label for="password">Password</label>
     <input id="password" type="password" formControlName="password">
     <div class="validation"

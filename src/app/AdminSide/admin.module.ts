@@ -4,9 +4,11 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import {SharedModule} from '../Shared/shared.module';
 import {CommonModule} from '@angular/common';
 import { CreateComponent } from './Components/create/create.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClientModule} from '../ClientSide/client.module';
 import { EditComponent } from './Components/edit/edit.component';
+// import {AppModule} from '../app.module';
+import {SearchPipe} from '../pipes/search.pipe';
 
 
 @NgModule({
@@ -15,12 +17,14 @@ import { EditComponent } from './Components/edit/edit.component';
     DashboardComponent,
     CreateComponent,
     EditComponent,
+    SearchPipe
   ],
   imports: [
     SharedModule,
     CommonModule,
     ReactiveFormsModule,
-    ClientModule
+    ClientModule,
+    FormsModule,
   ],
   exports: [
   ]
