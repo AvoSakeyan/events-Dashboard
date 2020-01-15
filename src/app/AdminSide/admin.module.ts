@@ -7,8 +7,9 @@ import { CreateComponent } from './Components/create/create.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClientModule} from '../ClientSide/client.module';
 import { EditComponent } from './Components/edit/edit.component';
-// import {AppModule} from '../app.module';
 import {SearchPipe} from '../pipes/search.pipe';
+
+
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {SearchPipe} from '../pipes/search.pipe';
     DashboardComponent,
     CreateComponent,
     EditComponent,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     SharedModule,
